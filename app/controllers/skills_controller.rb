@@ -1,9 +1,9 @@
-class SkillsController < ProtectedController
+class SkillsController < OpenReadController
   before_action :set_skill, only: [:show, :update, :destroy]
 
   # GET /skills
   def index
-    @skills = current_user.Skill.all
+    @skills = Skill.all
 
     render json: @skills
   end
