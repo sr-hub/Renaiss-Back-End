@@ -10,12 +10,13 @@ class SkillsController < OpenReadController
 
   # GET /skills/1
   def show
+    # possible remobe show from before action; change @kill to Skill.find[params[:id]]
     render json: @skill
   end
 
   # POST /skills
   def create
-    @skill = current_user.skill.build(skill_params)
+    @skill = current_user.skills.build(skill_params)
 
     if @skill.save
       render json: @skill, status: :created, location: @skill
@@ -26,7 +27,7 @@ class SkillsController < OpenReadController
 
   # PATCH/PUT /skills/1
   def update
-    if current_user.skill.update(skill_params)
+    if @skill.update(skill_params)
       render json: @skill
     else
       render json: @skill.errors, status: :unprocessable_entity

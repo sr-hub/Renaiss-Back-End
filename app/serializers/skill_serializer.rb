@@ -4,5 +4,4 @@ class SkillSerializer < ActiveModel::Serializer
     def editable
       scope == object.user
     end
-
 end
