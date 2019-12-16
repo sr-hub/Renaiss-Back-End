@@ -3,7 +3,7 @@ class SkillsController < ProtectedController
 
   # GET /skills
   def index
-    @skills = Skill.all
+    @skills = current_user.Skill.all
 
     render json: @skills
   end
@@ -15,7 +15,7 @@ class SkillsController < ProtectedController
 
   # POST /skills
   def create
-    @skill = Skill.new(skill_params)
+    @skill = current_user.skill.build(skill_params)
 
     if @skill.save
       render json: @skill, status: :created, location: @skill
@@ -26,7 +26,7 @@ class SkillsController < ProtectedController
 
   # PATCH/PUT /skills/1
   def update
-    if @skill.update(skill_params)
+    if current_user.skill.update(skill_params)
       render json: @skill
     else
       render json: @skill.errors, status: :unprocessable_entity
@@ -41,7 +41,7 @@ class SkillsController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_skill
-      @skill = Skill.find(params[:id])
+      @skill = current_user.skills.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
