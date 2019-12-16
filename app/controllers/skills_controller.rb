@@ -47,6 +47,6 @@ class SkillsController < OpenReadController
 
     # Only allow a trusted parameter "white list" through.
     def skill_params
-      params.require(:skill).permit(:name, :units, :currentUnit, :maxUnit)
+      params.require(:skill).permit(:name, :units, :currentUnit, :maxUnit, :user_id)
     end
 end
