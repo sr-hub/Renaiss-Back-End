@@ -1,4 +1,4 @@
 class Skill < ApplicationRecord
   belongs_to :user
-  validates :text, :user, presence: true
+  validates :user, presence: true
 end
